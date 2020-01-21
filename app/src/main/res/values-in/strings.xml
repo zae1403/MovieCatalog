@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Submission2 -MovieCatalog</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="movie_name">Nama Film</string>
+    <string name="description">Deskripsi</string>
+    <string name="rating">Ulasan</string>
+    <string name="director">Sutradara</string>
+    <string name="tab_text_1">Film</string>
+    <string name="tab_text_2">TV Series</string>
+    <string name="detail_overview">Sinopsis</string>
+    <string name="change_language">Ubah Bahasa</string>
+    <string name="nol">-</string>
+    <string name="title">Katalog Film</string>
+    <string name="title_movie">Detail Film</string>
+    <string name="title_tvshow">Detail TV Series</string>
+
+</resources>
