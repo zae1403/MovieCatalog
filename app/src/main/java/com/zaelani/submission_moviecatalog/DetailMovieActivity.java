@@ -1,4 +1,4 @@
-package com.zaelani.submission2_moviecatalog;
+package com.zaelani.submission_moviecatalog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zaelani.submission2_moviecatalog.model.Movie;
+import com.bumptech.glide.Glide;
+import com.zaelani.submission_moviecatalog.model.MovieItems;
 
 public class DetailMovieActivity extends AppCompatActivity {
     public static final String EXTRA_MOVIE = "extra_movie";
@@ -22,15 +23,18 @@ public class DetailMovieActivity extends AppCompatActivity {
         TextView tvEditor = findViewById(R.id.tv_detail_editor);
         ImageView iv_photo = findViewById(R.id.img_photo);
 
-        Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
-        tvName.setText(movie.getName());
-        tvDescription.setText(movie.getDescription());
-        tvRating.setText(movie.getRating());
-        tvEditor.setText(movie.getDirector());
-        iv_photo.setImageResource(movie.getPhoto());
+        MovieItems movieItems = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        tvName.setText(movieItems.getName());
+        tvDescription.setText(movieItems.getDescription());
+        tvRating.setText(movieItems.getRating());
+        tvEditor.setText(movieItems.getDirector());
+
+        Glide.with(this)
+                .load(movieItems.getPhoto())
+                .into(iv_photo);
 
         if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle(movie.getTitle());
+            getSupportActionBar().setTitle(movieItems.getTitle());
         }
 
     }

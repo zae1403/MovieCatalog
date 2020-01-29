@@ -1,34 +1,33 @@
-package com.zaelani.submission2_moviecatalog.model;
+package com.zaelani.submission_moviecatalog.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Movie implements Parcelable {
-    private String name,description,director,rating,title;
-    int photo;
+public class MovieItems implements Parcelable {
+    private String name,description,director,rating,title,photo;
 
-    public Movie(){
+    public MovieItems(){
 
     }
 
-    protected Movie(Parcel in) {
+    protected MovieItems(Parcel in) {
         name = in.readString();
         description = in.readString();
-        photo = in.readInt();
         director = in.readString();
         rating = in.readString();
         title = in.readString();
+        photo = in.readString();
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+    public static final Creator<MovieItems> CREATOR = new Creator<MovieItems>() {
         @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
+        public MovieItems createFromParcel(Parcel in) {
+            return new MovieItems(in);
         }
 
         @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
+        public MovieItems[] newArray(int size) {
+            return new MovieItems[size];
         }
     };
 
@@ -56,11 +55,11 @@ public class Movie implements Parcelable {
         this.description = description;
     }
 
-    public int getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(int photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -89,9 +88,9 @@ public class Movie implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeInt(photo);
         parcel.writeString(director);
         parcel.writeString(rating);
         parcel.writeString(title);
+        parcel.writeString(photo);
     }
 }
