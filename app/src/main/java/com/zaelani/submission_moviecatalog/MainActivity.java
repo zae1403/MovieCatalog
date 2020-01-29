@@ -1,4 +1,4 @@
-package com.zaelani.submission2_moviecatalog;
+package com.zaelani.submission_moviecatalog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
-import com.zaelani.submission2_moviecatalog.adapter.SectionPagerAdapter;
+import com.zaelani.submission_moviecatalog.adapter.SectionPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

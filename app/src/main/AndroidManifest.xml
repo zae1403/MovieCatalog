@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zaelani.submission2_moviecatalog">
+    package="com.zaelani.submission_moviecatalog">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DetailMovieActivity"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".MainActivity">
+            android:name="com.zaelani.submission_moviecatalog.DetailMovieActivity"
+            android:parentActivityName="com.zaelani.submission_moviecatalog.MainActivity"></activity>
+        <activity android:name="com.zaelani.submission_moviecatalog.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

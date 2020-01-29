@@ -1,4 +1,4 @@
-package com.zaelani.submission2_moviecatalog.adapter;
+package com.zaelani.submission_moviecatalog.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.zaelani.submission2_moviecatalog.DetailMovieActivity;
-import com.zaelani.submission2_moviecatalog.R;
-import com.zaelani.submission2_moviecatalog.model.Movie;
+import com.zaelani.submission_moviecatalog.DetailMovieActivity;
+import com.zaelani.submission_moviecatalog.R;
+import com.zaelani.submission_moviecatalog.model.MovieItems;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ListMovieAdapter extends RecyclerView.Adapter <ListMovieAdapter.ListViewHolder> {
-    private ArrayList<Movie> movies;
+    private ArrayList<MovieItems> movies = new ArrayList<>();
 
-    public ListMovieAdapter(ArrayList<Movie> movies) {
-        this.movies = movies;
+    public void setMovies(ArrayList<MovieItems> items) {
+        movies.clear();
+        movies.addAll(items);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -34,24 +36,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter <ListMovieAdapter.Lis
 
     @Override
     public void onBindViewHolder(@NonNull final ListMovieAdapter.ListViewHolder holder, final int position) {
-        final Movie movie = movies.get(position);
-
-        Glide.with(holder.itemView.getContext())
-                .load(movie.getPhoto())
-                .apply(new RequestOptions().override(60,90))
-                .into(holder.ivPhoto);
-        holder.tvName.setText(movie.getName());
-        holder.tvDescription.setText(movie.getDescription());
-        holder.tvRating.setText(movie.getRating());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(holder.itemView.getContext(), DetailMovieActivity.class);
-                intent.putExtra(DetailMovieActivity.EXTRA_MOVIE,movie);
-                holder.itemView.getContext().startActivity(intent);
-            }
-        });
+       holder.bind(movies.get(position));
     }
 
     @Override
@@ -70,6 +55,26 @@ public class ListMovieAdapter extends RecyclerView.Adapter <ListMovieAdapter.Lis
             tvRating = itemView.findViewById(R.id.tv_rating);
             tvDescription = itemView.findViewById(R.id.tv_description);
             ivPhoto = itemView.findViewById(R.id.iv_photo);
+        }
+
+        void bind(final MovieItems movieItems){
+            tvName.setText(movieItems.getName());
+            tvDescription.setText(movieItems.getDescription());
+            tvRating.setText(movieItems.getRating());
+
+            Glide.with(itemView.getContext())
+                    .load(movieItems.getPhoto())
+                    .apply(new RequestOptions().override(60,90))
+                    .into(ivPhoto);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(itemView.getContext(), DetailMovieActivity.class);
+                    intent.putExtra(DetailMovieActivity.EXTRA_MOVIE, movieItems);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

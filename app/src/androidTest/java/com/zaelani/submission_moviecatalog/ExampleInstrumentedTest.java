@@ -1,4 +1,4 @@
-package com.zaelani.submission2_moviecatalog;
+package com.zaelani.submission_moviecatalog;
 
 import android.content.Context;
 
