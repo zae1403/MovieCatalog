@@ -4,11 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class MovieItems implements Parcelable {
-    private String name,description,director,rating,title,photo;
+    private String name, description, director, rating, title, photo;
+    private int id;
 
-    public MovieItems(){
+
+    public MovieItems() {
 
     }
+
 
     protected MovieItems(Parcel in) {
         name = in.readString();
@@ -17,6 +20,7 @@ public class MovieItems implements Parcelable {
         rating = in.readString();
         title = in.readString();
         photo = in.readString();
+        id = in.readInt();
     }
 
     public static final Creator<MovieItems> CREATOR = new Creator<MovieItems>() {
@@ -30,6 +34,14 @@ public class MovieItems implements Parcelable {
             return new MovieItems[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -92,5 +104,6 @@ public class MovieItems implements Parcelable {
         parcel.writeString(rating);
         parcel.writeString(title);
         parcel.writeString(photo);
+        parcel.writeInt(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.zaelani.submission_moviecatalog.viewmodel;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -13,17 +14,18 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import cz.msebera.android.httpclient.Header;
 
-public class TvShowViewModel extends ViewModel {
+public class MoviesViewModel extends ViewModel {
     private static final String API_KEY = BuildConfig.TheMovieDBApi;
     private MutableLiveData<ArrayList<MovieItems>> listMovies = new MutableLiveData<>();
 
     public MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
 
-    public MutableLiveData<ArrayList<MovieItems>> getListMovies() {
+    public LiveData<ArrayList<MovieItems>> getListMovies() {
         return listMovies;
     }
 
@@ -31,7 +33,7 @@ public class TvShowViewModel extends ViewModel {
         isLoading.postValue(true);
         AsyncHttpClient client = new AsyncHttpClient();
         final ArrayList<MovieItems> listItems = new ArrayList<>();
-        String url = "https://api.themoviedb.org/3/discover/tv?api_key=" + API_KEY + "&language=en-US";
+        String url = "https://api.themoviedb.org/3/discover/movie?api_key=" + API_KEY + "&language=en-US";
         final String urlPhoto = BuildConfig.UrlPhotoMovie;
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
@@ -44,7 +46,7 @@ public class TvShowViewModel extends ViewModel {
                     for (int i = 0; i < list.length(); i++) {
                         JSONObject movie = list.getJSONObject(i);
                         MovieItems movieItems = new MovieItems();
-                        movieItems.setName(movie.getString("original_name"));
+                        movieItems.setName(movie.getString("original_title"));
                         movieItems.setDescription(movie.getString("overview"));
                         double rating = movie.getDouble("vote_average");
                         movieItems.setRating(new DecimalFormat("#.#").format(rating));
@@ -68,6 +70,5 @@ public class TvShowViewModel extends ViewModel {
 
             }
         });
-
     }
 }

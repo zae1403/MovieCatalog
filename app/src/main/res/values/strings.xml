@@ -2,6 +2,7 @@
     <string name="app_name">Submission2 -MovieCatalog</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="movie_catalog">Movie Catalog</string>
     <string name="movie_name">Movie Name</string>
     <string name="description">Description</string>
     <string name="rating">Rating</string>
@@ -12,7 +13,15 @@
     <string name="change_language">Change Language</string>
     <string name="nol">-</string>
     <string name="title">Movie Catalog</string>
-    <string name="title_movie">Detail Movie</string>
-    <string name="title_tvshow">Detail TV Show</string>
-
+    <string name="detail_movie">Detail Movie</string>
+    <string name="detail_tvshow">Detail TV Show</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_home">Home</string>
+    <string name="zae">Muhammad Zaelani Saputra</string>
+    <string name="email">muhammadzaelanisap@gmail.com</string>
+    <string name="result_succes">Successfully added to favorites</string>
+    <string name="doesnt_exist">Data saat ini belum tersedia</string>
+    <string name="does_exist">Data does exist</string>
+    <string name="ava_profile">https://d2zvxgfo5lha7k.cloudfront.net/small/avatar/20191003132215f8b9d26b4010be6cfe2ad6f8e59816ff.jpg</string>
 </resources>
